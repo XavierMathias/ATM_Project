@@ -9,7 +9,16 @@ public class ClientAccountManagement {
     public static HashMap<Integer, Account> listOfAccounts = new HashMap<Integer, Account>();
     private SecureRandom sr = new SecureRandom();
 
-    public ClientAccountManagement(){}
+    public ClientAccountManagement(){
+        // instantiating two accounts
+        var account1 = new Account("David", "Santos", 1000.00, "Checking");
+        var account2 = new Account("Melina", "Garcia", 2900.00, "Savings");
+
+        // putting accounts into Hashmap listOfAccounts
+        listOfAccounts.put(account1.getAccountNum(), account1);
+        listOfAccounts.put(account2.getAccountNum(), account2);
+
+    } // end of constructor
 
     //
     protected void createAccount(Account newlyCreatedAccount ){
@@ -17,12 +26,6 @@ public class ClientAccountManagement {
         listOfAccounts.put(newlyCreatedAccount.getAccountNum(), newlyCreatedAccount);
         System.out.println("ACCOUNT ADDED TO HASHMAP");
         System.out.println(listOfAccounts);
-       // for(main.Account a: accounts){
-         //   System.out.println(a.accountInfo());
-         //   System.out.println();
-           //
-      //  } // end of for
-
 
     } // end of createAccount method
 
@@ -35,15 +38,6 @@ public class ClientAccountManagement {
     public Account getAccount(Integer accountNumber){
         return listOfAccounts.get(accountNumber);
     }
-
-
-
-
-
-
-
-
-  
 
     // TODO setup decyrption for PIN method here
 
@@ -58,8 +52,7 @@ public class ClientAccountManagement {
             System.err.println("HashMap is Empty");
         } else {
             for(Account a: listOfAccounts.values()){
-                System.out.println("main.Account Number ::: Name");
-                System.out.printf("%d ::: %s %s%n", a.getAccountNum(), a.getFirstName(), a.getLastName());
+                a.accountInfo();
             } // prints all the accounts in
         }
         

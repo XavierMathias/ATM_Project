@@ -14,7 +14,8 @@ public class UserInterface {
                     "2. Withdraw account\n" +
                     "3. Deposit account\n" +
                     "4. Close account\n" +
-                    "5. End ");
+                    "5. View all active accounts\n" +
+                    "6. End ");
             int option = input.nextInt();
             switch(option){
                 case 1:
@@ -30,6 +31,8 @@ public class UserInterface {
                     closingAccount();
                     break;
                 case 5:
+                    displayAllAccounts();
+                case 6:
                     stillActive = false;
                     break;
 
@@ -52,7 +55,9 @@ public class UserInterface {
         // prints every key-value pair
         cam.viewListOfAccounts();
         System.out.println("Enter the account number that you want to use:");
-        Account accountSelected = cam.getAccount(input.nextInt());
+        Account accountSelected = cam.getAccount(input.nextInt()); //
+
+        System.out.println(accountSelected.accountInfo());
 
         System.out.println("How much money do you want to withdraw?");
         accountSelected.withdraw(input.nextDouble());
@@ -102,7 +107,11 @@ public class UserInterface {
         }
 
 
-
     } // end of creatingAccount
 
-}
+    // displays all accounts saved in CAM
+    public void displayAllAccounts(){
+        cam.viewListOfAccounts();
+    }
+
+} // end of class

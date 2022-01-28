@@ -49,22 +49,32 @@ public class UserInterface {
     private void depositingAccount() {
     }
 
-    //Withdraws
+    //Withdraws a certain amount from a specific account and repeats the process
+    // TODO Create a test for this class
     private void withdrawingAccount(){
-        System.out.println("Select with account you want to withdraw from:");
 
-        // prints every key-value pair
-        cam.viewListOfAccounts();
-        System.out.println("Enter the account number that you want to use:");
-        Account accountSelected = cam.getAccount(input.nextInt()); //
+        boolean doAnotherWithdraw = true;
 
-        System.out.println(accountSelected.accountInfo());
+        while(doAnotherWithdraw) {
+            System.out.println("Select with account you want to withdraw from:");
 
-        System.out.println("How much money do you want to withdraw?");
-        accountSelected.withdraw(input.nextDouble());
-        System.out.println("Your current balance for account " + accountSelected.getAccountNum()
-                + " is: $" + accountSelected.getBalance());
+            // prints every key-value pair
+            cam.viewListOfAccounts();
+            System.out.println("Enter the account number that you want to use:");
+            Account accountSelected = cam.getAccount(input.nextInt()); //
 
+            System.out.println(accountSelected.accountInfo());
+
+            System.out.println("How much money do you want to withdraw?");
+            accountSelected.withdraw(input.nextDouble());
+            System.out.println("Your current balance for account " + accountSelected.getAccountNum()
+                    + " is: $" + accountSelected.getBalance());
+
+            System.out.println("Do you want to make an other withdraw? Y/N");
+            if(!input.next().equals("N")){
+                doAnotherWithdraw = false;
+            }
+        } // end of while
 
 
 

@@ -47,7 +47,8 @@ public class UserInterface {
     private void closingAccount() {
     }
 
-    // TODO Complete depositingAccount in the code
+    // TODO run the function
+    // TODO Create a test for it
     private void depositingAccount() {
 
         boolean doAnotherDeposit = true;
@@ -61,10 +62,14 @@ public class UserInterface {
             System.out.println("Enter the amount you would like to deposit");
             double depositAmount = input.nextDouble();
 
+            accountSelected.deposit(depositAmount);
+            System.out.println("Your current balance for account " + accountSelected.getAccountNum()
+                    + " is: $" + accountSelected.getBalance());
 
-
-
-
+            System.out.println("Would you like to make another deposit? Y/N");
+            if (input.nextLine() == "N"){
+                doAnotherDeposit = false;
+            }
         } // while loop
 
     } // end of depositAccount

@@ -1,5 +1,7 @@
 import java.util.HashMap;
 import java.security.SecureRandom;
+import java.util.Map;
+import java.util.stream.Stream;
 
 public class ClientAccountManagement {
     // Key: Integer ACCOUNT_NUMBER, Value: Arraylist ACCOUNTS
@@ -11,12 +13,18 @@ public class ClientAccountManagement {
 
     public ClientAccountManagement(){
         // instantiating two accounts
-        var account1 = new Account("David", "Santos", 1000.00, "Checking");
-        var account2 = new Account("Melina", "Garcia", 2900.00, "Savings");
+        System.out.println("Creating Existing Accounts");
+        Account account1 = new Account("David", "Santos", 1000.00, "Checking");
+        Account account2 = new Account("Melina", "Garcia", 2900.00, "Savings");
 
+        System.out.println(account1);
+        System.out.println(account2);
         // putting accounts into Hashmap listOfAccounts
         listOfAccounts.put(account1.getAccountNum(), account1);
         listOfAccounts.put(account2.getAccountNum(), account2);
+
+        Stream.of(listOfAccounts.keySet().toString()).forEach(System.out::println);
+
 
     } // end of constructor
 

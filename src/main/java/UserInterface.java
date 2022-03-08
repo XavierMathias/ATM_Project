@@ -43,11 +43,36 @@ public class UserInterface {
         System.out.println("Simulation Ended");
     } // end of constructor
 
+    // TODO Complete closingAccount in the code
     private void closingAccount() {
     }
 
+    // TODO run the function
+    // TODO Create a test for it
     private void depositingAccount() {
-    }
+
+        boolean doAnotherDeposit = true;
+
+        while(doAnotherDeposit){
+            System.out.println("Which account would you like to deposit");
+            cam.viewListOfAccounts();
+            Account accountSelected = cam.getAccount(input.nextInt());
+
+            System.out.println(accountSelected.accountInfo());
+            System.out.println("Enter the amount you would like to deposit");
+            double depositAmount = input.nextDouble();
+
+            accountSelected.deposit(depositAmount);
+            System.out.println("Your current balance for account " + accountSelected.getAccountNum()
+                    + " is: $" + accountSelected.getBalance());
+
+            System.out.println("Would you like to make another deposit? Y/N");
+            if (input.nextLine() == "N"){
+                doAnotherDeposit = false;
+            }
+        } // while loop
+
+    } // end of depositAccount
 
     //Withdraws a certain amount from a specific account and repeats the process
     // TODO Create a test for this class
